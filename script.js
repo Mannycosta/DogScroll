@@ -1,0 +1,709 @@
+const html = document.documentElement;
+const canvas = document.getElementById("hero-lightpass");
+const context = canvas.getContext("2d");
+
+const dogs = [
+	{
+		name: "0001.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0001_l-uFsG0J9K9e.png",
+	},
+	{
+		name: "0002.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0002_1V4oyiz_o2IZU.png",
+	},
+	{
+		name: "0003.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0003__bpBR4m6HSAU.png",
+	},
+	{
+		name: "0004.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0004_kuESm9jPB52gs.png",
+	},
+	{
+		name: "0005.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0005_eqt4oAFpbmhhT.png",
+	},
+	{
+		name: "0006.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0006_5I5zP-GqktrjK.png",
+	},
+	{
+		name: "0007.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0007__-aYwFOv9W3ON.png",
+	},
+	{
+		name: "0008.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0008_4aay_YjNDHPSh.png",
+	},
+	{
+		name: "0009.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0009_4GY2lf7OwPE3.png",
+	},
+	{
+		name: "0010.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0010_HeUnDNfTNFQ0v.png",
+	},
+	{
+		name: "0011.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0011_F9vNrCK1HuJt.png",
+	},
+	{
+		name: "0012.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0012_3EWDLzXR0kABB.png",
+	},
+	{
+		name: "0013.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0013_6twIx9ZGZKD7o.png",
+	},
+	{
+		name: "0014.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0014_BpKshgXcdl5L7.png",
+	},
+	{
+		name: "0015.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0015_A9C2liU2Zn8I.png",
+	},
+	{
+		name: "0016.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0016_gn4E-U3xmrgo9.png",
+	},
+	{
+		name: "0017.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0017_Nl2LxOy0C_RW.png",
+	},
+	{
+		name: "0018.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0018_NrffHcbVdKBj3.png",
+	},
+	{
+		name: "0019.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0019_hz4PDlN0Nklg-.png",
+	},
+	{
+		name: "0020.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0020_BgxuvUC2fkEU-.png",
+	},
+	{
+		name: "0021.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0021_KTsdFw7iYqYl.png",
+	},
+	{
+		name: "0022.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0022_6DrPeTK8qhJp.png",
+	},
+	{
+		name: "0023.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0023_V073dHfjmk33n.png",
+	},
+	{
+		name: "0024.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0024_hGYEmibnKfI_v.png",
+	},
+	{
+		name: "0025.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0025_kpn8ZCTDeB3jP.png",
+	},
+	{
+		name: "0026.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0026_f7N80Hkqf45ph.png",
+	},
+	{
+		name: "0027.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0027_bgRXNtrJjykQr.png",
+	},
+	{
+		name: "0028.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0028_aGE1wlLRR9Fa.png",
+	},
+	{
+		name: "0029.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0029_WECgs9lelwn1r.png",
+	},
+	{
+		name: "0030.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0030_i9B6_OiRd6Zma.png",
+	},
+	{
+		name: "0031.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0031_wAzlYqPegFSuy.png",
+	},
+	{
+		name: "0032.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0032_VVfHarZ_7gs1c.png",
+	},
+	{
+		name: "0033.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0033_Icocscu1Blqmk.png",
+	},
+	{
+		name: "0034.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0034_XH6ExKddV-xzY.png",
+	},
+	{
+		name: "0035.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0035_SsEO3gp6fdwWq.png",
+	},
+	{
+		name: "0036.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0036_bXSxc4_KPiYHK.png",
+	},
+	{
+		name: "0037.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0037_P_vf2b8sR-6XC.png",
+	},
+	{
+		name: "0038.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0038_Vn_xDxAm2sSiC.png",
+	},
+	{
+		name: "0039.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0039_R2hCQ3G1YayHA.png",
+	},
+	{
+		name: "0040.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0040_sULG4NdEZpyGW.png",
+	},
+	{
+		name: "0041.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0041_-OFd0juYoYdc0.png",
+	},
+	{
+		name: "0042.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0042_Ju7Yvyj39s-6r.png",
+	},
+	{
+		name: "0043.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0043_macLUBLRlyifH.png",
+	},
+	{
+		name: "0044.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0044_W5NsDDHf1cFMb.png",
+	},
+	{
+		name: "0045.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0045_tWOlKmrT5yLGN.png",
+	},
+	{
+		name: "0046.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0046_iWg4LXkWyjA86.png",
+	},
+	{
+		name: "0047.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0047_TFTJTUwcAkBO.png",
+	},
+	{
+		name: "0048.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0048_eo5ObgITphVSD.png",
+	},
+	{
+		name: "0049.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0049_EoH26uzDOrBnY.png",
+	},
+	{
+		name: "0050.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0050_l2ebrmyzUx8h9.png",
+	},
+	{
+		name: "0051.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0051_51PFsq1P81tn.png",
+	},
+	{
+		name: "0052.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0052_8sUg_RWPIYu-j.png",
+	},
+	{
+		name: "0053.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0053_yM_gLjmFo1PIO.png",
+	},
+	{
+		name: "0054.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0054_5gEs5OfmLU1cr.png",
+	},
+	{
+		name: "0055.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0055_cx9jZDIGGGj09.png",
+	},
+	{
+		name: "0056.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0056_Y5_m76DxVG_pQ.png",
+	},
+	{
+		name: "0057.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0057_uW0mskFZUOpFi.png",
+	},
+	{
+		name: "0058.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0058_IDiP9XIF2sd_L.png",
+	},
+	{
+		name: "0059.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0059_dfI7TmGlH1Pbp.png",
+	},
+	{
+		name: "0060.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0060_8EDBegNDGPMx-.png",
+	},
+	{
+		name: "0061.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0061_j8-dpE3w1pQzG.png",
+	},
+	{
+		name: "0062.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0062_2O16R4few5oN7.png",
+	},
+	{
+		name: "0063.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0063_duHN1CmVIOzqP.png",
+	},
+	{
+		name: "0064.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0064_hy5xfx5tuYggQ.png",
+	},
+	{
+		name: "0065.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0065_rwj_fkq3gTcw-.png",
+	},
+	{
+		name: "0066.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0066_W-pqtcEX8ahqV.png",
+	},
+	{
+		name: "0067.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0067_myaS82QAQwNLT.png",
+	},
+	{
+		name: "0068.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0068_kiN35sFQYc9gi.png",
+	},
+	{
+		name: "0069.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0069_cLPs2DJYMtkP9.png",
+	},
+	{
+		name: "0070.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0070_VPD9puPd9RHaR.png",
+	},
+	{
+		name: "0071.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0071_IxJ0adnzSman1.png",
+	},
+	{
+		name: "0072.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0072_ds01g4knK8Lc-.png",
+	},
+	{
+		name: "0073.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0073_xUuvbe-ax9quB.png",
+	},
+	{
+		name: "0074.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0074_9oV3E862PRjVR.png",
+	},
+	{
+		name: "0075.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0075_OsfMZ-ElnZWtv.png",
+	},
+	{
+		name: "0076.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0076_-fLmyRjOprMNy.png",
+	},
+	{
+		name: "0077.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0077_PhII867_2qDDj.png",
+	},
+	{
+		name: "0078.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0078_fvkeqW0W30zKH.png",
+	},
+	{
+		name: "0079.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0079_fGx6EGccWfD4t.png",
+	},
+	{
+		name: "0080.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0080_chu5qJd6SdvB.png",
+	},
+	{
+		name: "0081.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0081_BLmKL39Ap_lR.png",
+	},
+	{
+		name: "0082.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0082_0DjRtfc4zdjB1.png",
+	},
+	{
+		name: "0083.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0083_4rGss2QrNbWhm.png",
+	},
+	{
+		name: "0084.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0084_jbU46zBUcStmr.png",
+	},
+	{
+		name: "0085.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0085_LfzxQYbpC1s43.png",
+	},
+	{
+		name: "0086.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0086_nZbVa2Mw-HHcG.png",
+	},
+	{
+		name: "0087.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0087_sqeEMJ_WKMvBi.png",
+	},
+	{
+		name: "0088.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0088_Bfm5dczjXqChV.png",
+	},
+	{
+		name: "0089.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0089_FoF01osnhZW55.png",
+	},
+	{
+		name: "0090.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0090_v7Hd3GhW07Yik.png",
+	},
+	{
+		name: "0091.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0091_ljOjpqZvzqe0k.png",
+	},
+	{
+		name: "0092.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0092_HGLpg9CRRhf8.png",
+	},
+	{
+		name: "0093.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0093_xumx5xO1Ac9Sm.png",
+	},
+	{
+		name: "0094.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0094_QdPq1ST0NPFPR.png",
+	},
+	{
+		name: "0095.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0095__L5Nz2HEKEpZq.png",
+	},
+	{
+		name: "0096.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0096_nbyvRSBeJe1ib.png",
+	},
+	{
+		name: "0097.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0097_PYqVcxIKgDuEV.png",
+	},
+	{
+		name: "0098.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0098_8cP3Tuq3e0UPY.png",
+	},
+	{
+		name: "0099.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0099_QATLI1X6I_hC.png",
+	},
+	{
+		name: "0100.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0100_4x40nJV-0NZ0p.png",
+	},
+	{
+		name: "0101.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0101_ROzEjYYQwjfrj.png",
+	},
+	{
+		name: "0102.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0102__Hcmnr2_kjmb.png",
+	},
+	{
+		name: "0103.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0103_v6SN74GREi7SG.png",
+	},
+	{
+		name: "0104.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0104_ZlSg3pMkvVwVD.png",
+	},
+	{
+		name: "0105.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0105_Cvj3ltr1YJYV.png",
+	},
+	{
+		name: "0106.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0106_pFZWOVSMdeq6j.png",
+	},
+	{
+		name: "0107.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0107_tE7Lt2X9rfSI7.png",
+	},
+	{
+		name: "0108.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0108_GgMpK18aa7rJv.png",
+	},
+	{
+		name: "0109.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0109_3ueV1JyJnTbcQ.png",
+	},
+	{
+		name: "0110.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0110_wOFAjC9iKDTTc.png",
+	},
+	{
+		name: "0111.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0111_-j2yNI5qe7Cp.png",
+	},
+	{
+		name: "0112.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0112_t-kvG7-iQiFxX.png",
+	},
+	{
+		name: "0113.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0113_RfhzVStTMp6m.png",
+	},
+	{
+		name: "0114.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0114_D3d_VJrOLgswD.png",
+	},
+	{
+		name: "0115.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0115_rj6oohA_89fES.png",
+	},
+	{
+		name: "0116.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0116_oGiojyYyy1v3W.png",
+	},
+	{
+		name: "0117.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0117_ZC3hUjKm7qjqN.png",
+	},
+	{
+		name: "0118.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0118_4C47QIeV3e_Zp.png",
+	},
+	{
+		name: "0119.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0119_6JfuDvIsfl5y.png",
+	},
+	{
+		name: "0120.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0120_Joba3MEzkpPSV.png",
+	},
+	{
+		name: "0121.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0121_uymx3d8xxmmp9.png",
+	},
+	{
+		name: "0122.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0122_KRFYz_t5XwMte.png",
+	},
+	{
+		name: "0123.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0123_CfY5QR_R217l.png",
+	},
+	{
+		name: "0124.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0124_2AM4JUuTuceqR.png",
+	},
+	{
+		name: "0125.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0125_PH_SLwu93wo2D.png",
+	},
+	{
+		name: "0126.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0126_iolyD9pcf1uYo.png",
+	},
+	{
+		name: "0127.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0127_YoO-SNAClfYtl.png",
+	},
+	{
+		name: "0128.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0128_aL3vZBEkVhIsb.png",
+	},
+	{
+		name: "0129.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0129_3yQVUWEsgYb7.png",
+	},
+	{
+		name: "0130.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0130_vIodMyndU7YCs.png",
+	},
+	{
+		name: "0131.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0131_02kV2mtN7KBg7.png",
+	},
+	{
+		name: "0132.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0132_z7rzXaaoKGdiK.png",
+	},
+	{
+		name: "0133.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0133_esYiFP_SyWMi9.png",
+	},
+	{
+		name: "0134.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0134_ZvJBrcRP5zxt.png",
+	},
+	{
+		name: "0135.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0135_caM1wD3Eclc8A.png",
+	},
+	{
+		name: "0136.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0136_chy_RzFxFEN_j.png",
+	},
+	{
+		name: "0137.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0137_OZzUS6He4yKB.png",
+	},
+	{
+		name: "0138.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0138_oSy9vhlcjTHUL.png",
+	},
+	{
+		name: "0139.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0139_W0PcMVQ3zrHD9.png",
+	},
+	{
+		name: "0140.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0140_muAC6Mo_xNmr5.png",
+	},
+	{
+		name: "0141.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0141_ft6z-dAEZggmY.png",
+	},
+	{
+		name: "0142.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0142_zdnDqKUH_-w5d.png",
+	},
+	{
+		name: "0143.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0143_fQPvn9oJXgvEC.png",
+	},
+	{
+		name: "0144.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0144_FwdrCke_gGLI.png",
+	},
+	{
+		name: "0145.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0145_A5W_w_ekAGDOE.png",
+	},
+	{
+		name: "0146.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0146_R-6cbXQNQ1Xud.png",
+	},
+	{
+		name: "0147.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0147_OjTd9ST4XhQwT.png",
+	},
+	{
+		name: "0148.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0148_5mXhs1VuEz-Vm.png",
+	},
+	{
+		name: "0149.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0149_VrqrAaZUl6IYW.png",
+	},
+	{
+		name: "0150.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0150_uGMvmLOtYvSjx.png",
+	},
+	{
+		name: "0151.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0151_S_dPKUY6KqdjD.png",
+	},
+	{
+		name: "0152.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0152_hxOYCiUZGqtQ.png",
+	},
+	{
+		name: "0153.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0153_9XUzBIayh0voV.png",
+	},
+	{
+		name: "0154.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0154_u1Xv6y6Z86wA3.png",
+	},
+	{
+		name: "0155.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0155_SY6dy39nXKOA-.png",
+	},
+	{
+		name: "0156.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0156_CboPnT-b-KgpC.png",
+	},
+	{
+		name: "0157.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0157_k-ncT149-lsaD.png",
+	},
+	{
+		name: "0158.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0158_9a6DBhheKB0UZ.png",
+	},
+	{
+		name: "0159.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0159_QawO8JGLtN_No.png",
+	},
+	{
+		name: "0160.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0160_WIQ_R8AguyNtQ.png",
+	},
+	{
+		name: "0161.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0161_VpCeZaU-GAfVT.png",
+	},
+	{
+		name: "0162.jpg",
+		url: "https://ik.imagekit.io/4bekbyvz2z0/Dogs/0162_piHsz7Fzk3_X-.png",
+	},
+];
+
+// const index = 2;
+
+// const dogPic = dogs.filter(
+// 	pic => pic.name === `${index.toString().padStart(4, "0")}.jpg`
+// );
+
+// console.log(dogPic[0].url);
+
+const frameCount = 162;
+const currentFrame = index => {
+	const dogPic = dogs.filter(
+		pic => pic.name === `${index.toString().padStart(4, "0")}.jpg`
+	);
+	return `${dogPic[0].url}`;
+};
+
+// =>
+// 	`https://www.apple.com/105/media/us/airpods-pro/2019/1299e2f5_9206_4470_b28e_08307a42f19b/anim/sequence/large/01-hero-lightpass/${index
+// 		.toString()
+// 		.padStart(4, "0")}.jpg`;
+
+const preloadImages = () => {
+	for (let i = 1; i < frameCount; i++) {
+		const img = new Image();
+		img.src = currentFrame(i);
+	}
+};
+
+const img = new Image();
+img.src = currentFrame(1);
+canvas.width = 2560;
+canvas.height = 1440;
+img.onload = function () {
+	context.drawImage(img, 0, 0);
+};
+
+const updateImage = index => {
+	img.src = currentFrame(index);
+	context.drawImage(img, 0, 0);
+};
+
+window.addEventListener("scroll", () => {
+	const scrollTop = html.scrollTop;
+	const maxScrollTop = html.scrollHeight - window.innerHeight;
+	const scrollFraction = scrollTop / maxScrollTop;
+	const frameIndex = Math.min(
+		frameCount - 1,
+		Math.ceil(scrollFraction * frameCount)
+	);
+
+	requestAnimationFrame(() => updateImage(frameIndex + 1));
+});
+
+preloadImages();
